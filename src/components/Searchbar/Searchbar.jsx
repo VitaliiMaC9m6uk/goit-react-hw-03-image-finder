@@ -6,6 +6,7 @@ export class Searchbar extends Component {
   state = {
     findtext: '',    
     articles: [],
+    // page:this.props.page,
   };
   hendlerChange = ({ target: { value } }) => {
     if (value.trim() !== '') {
@@ -21,7 +22,8 @@ export class Searchbar extends Component {
     this.setState({findtext:''})
   };
 async componentDidUpdate(prevProps, prevState) {
-    if (prevState.findtext !== this.state.findtext) {
+  if (prevState.findtext !== this.state.findtext ||
+      prevProps !== this.props) {
       try {
         const response = await axios.get(
           `?q=${this.state.findtext.replace(' ', '+')}&page=${

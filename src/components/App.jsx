@@ -10,16 +10,20 @@ export class App extends Component {
   state = {
     KEY: '34860459-58caa0f812cc249544584c986',
     articles: [],
-    totalHits:0,
-    page: 1,    
+    totalHits: 0,
+    page: 1,
   };
-  hendlerSavedData = event => {      
+  hendlerSavedData = event => {
     this.setState({
       articles: event.hits,
-      totalHits: event.totalHits
-    });  
+      totalHits: event.totalHits,
+    });
   };
-  
+  hendlerPageIncrement = () => {
+    this.setState((prev) => ({
+      page: prev.page + 1,
+    }))
+  }
   render() {
     return (
       <div>
@@ -39,7 +43,7 @@ export class App extends Component {
             ))}
           <ImageGalleryItem />
         </ImageGallery>
-        {this.state.totalHits !== 0 && <Button />}
+        {this.state.totalHits !== 0 && <Button click={this.hendlerPageIncrement} />}
       </div>
     );
   }
