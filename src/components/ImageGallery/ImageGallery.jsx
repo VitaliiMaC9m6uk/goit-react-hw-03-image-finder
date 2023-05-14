@@ -1,5 +1,4 @@
+import '../styles.css'
 export const ImageGallery = ({ children }) => {
-    return (
-        <ul className="gallery">{children}</ul>
-    )
+    return <ul className="ImageGallery">{children}</ul>;
 };

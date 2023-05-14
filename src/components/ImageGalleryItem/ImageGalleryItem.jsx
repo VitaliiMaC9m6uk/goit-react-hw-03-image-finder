@@ -1,7 +1,17 @@
-export const ImageGalleryItem = ({src,fullImage}) => {
+export const ImageGalleryItem = ({data, onClick}) => {    
     return (
-    <li className="gallery-item" >
-        <img src={src} alt={fullImage} />
-    </li>
-   )
+      <>
+        {data.map(image => (
+          <li className="ImageGalleryItem" key={image.id}>
+            <img
+              onClick={onClick}
+              className="ImageGalleryItem-image"
+              src={image.webformatURL}
+              alt={image.user}
+              data-full={image.largeImageURL}
+            ></img>
+          </li>
+        ))}
+      </>
+    );
 }
